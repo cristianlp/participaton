@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="ui large">
+  
+  <h2 class="ui header">
+    <img src="/images/icons/plugin.png">
+    <div class="content">
+      Convocatoria
+      <div class="sub header">Vigente hasta el 20/10/2017</div>
+    </div>
+  </h2>
+
+</div>
+
+<div class="ui large secondary pointing menu">
+
+	<a class="active item" data-tab="first"><i class="instagram outline icon"></i>Desafíos</a>
+	<a class="item" data-tab="second"><i class="comments outline icon"></i>Mensajes</a>
+	<a class="item" data-tab="third"><i class="list icon"></i>Actividad</a>
+
+	<div class="ui right item">
+		<div class="ui search transparent icon input">
+			<input type="text" placeholder="Buscar ..." class="prompt" /><i class="search link icon"></i>
+		</div>
+	</div>
+
+</div>
+
+<div class="ui bottom attached tab active" data-tab="first">
+	<div class="ui container">
+		<div id="desafios" class="ui three column doubling centered grid container">
+     <!-- TODO: recuperar datos con ajax -->
+
+     {% for desafio in desafios %}
+
+      <div class="column">
+        <div class="ui centered fluid card">
+          <div class="image">
+            <img src="imagenurl" />
+              </div>
+                <div class="content">
+                  <a class="header"></a>
+                    <div class="meta">
+                      <span class="date">fff</span>
+                      </div>
+                      <div class="description">jjj
+                      </div>
+                  </div>
+                    <div class="extra content">
+                    <span class="right floated">
+                       <i class="heart outline icon"></i>33
+                     </span>
+                    <span class="left floated">
+                       <i class="comments outline icon"></i>
+                        22
+                    </span>
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+
+
+    </div>
+	</div>
+</div>
+
+<div class="ui bottom attached tab" data-tab="second">
+	<div class="ui middle aligned divided list">
+  <div class="item">
+    <div class="right floated content">
+      <div class="ui button">Add</div>
+    </div>
+    <img class="ui avatar image" src="/images/avatar2/small/lena.png">
+    <div class="content">
+      Lena
+    </div>
+  </div>
+  <div class="item">
+    <div class="right floated content">
+      <div class="ui button">Add</div>
+    </div>
+    <img class="ui avatar image" src="/images/avatar2/small/lindsay.png">
+    <div class="content">
+      Lindsay
+    </div>
+  </div>
+  <div class="item">
+    <div class="right floated content">
+      <div class="ui button">Add</div>
+    </div>
+    <img class="ui avatar image" src="/images/avatar2/small/mark.png">
+    <div class="content">
+      Mark
+    </div>
+  </div>
+  <div class="item">
+    <div class="right floated content">
+      <div class="ui button">Add</div>
+    </div>
+    <img class="ui avatar image" src="/images/avatar2/small/molly.png">
+    <div class="content">
+      Molly
+    </div>
+  </div>
+</div>
+</div>
+<div class="ui bottom attached tab" data-tab="third">
+	<div class="ui large feed">
+  <div class="event">
+    <div class="label">
+      <img src="/images/avatar/small/elliot.jpg">
+    </div>
+    <div class="content">
+      <div class="summary">
+        <a class="user">
+          Elliot Fu
+        </a> added you as a friend
+        <div class="date">
+          1 Hour Ago
+        </div>
+      </div>
+      <div class="meta">
+        <a class="like">
+          <i class="like icon"></i> 4 Likes
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="event">
+    <div class="label">
+      <i class="pencil icon"></i>
+    </div>
+    <div class="content">
+      <div class="summary">
+        You submitted a new post to the page
+        <div class="date">
+          3 days ago
+        </div>
+      </div>
+      <div class="extra text">
+        I'm having a BBQ this weekend. Come by around 4pm if you can.
+      </div>
+      <div class="meta">
+        <a class="like">
+          <i class="like icon"></i> 11 Likes
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="event">
+    <div class="label">
+      <img src="/images/avatar/small/helen.jpg">
+    </div>
+    <div class="content">
+      <div class="date">
+        4 days ago
+      </div>
+      <div class="summary">
+        <a>Helen Troy</a> added <a>2 new illustrations</a>
+      </div>
+      <div class="extra images">
+        <a><img src="/images/wireframe/image.png"></a>
+        <a><img src="/images/wireframe/image.png"></a>
+      </div>
+      <div class="meta">
+        <a class="like">
+          <i class="like icon"></i> 1 Like
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}
+
+  <script type="text/javascript" src="{% static 'js/padmin.js' %}"></script>
+
+{% block js %}
+
+
+
+{% endblock %}
+

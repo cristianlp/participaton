@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form class="ui form">
+  <h3 class="ui dividing header">Nueva Convocatoria</h3>
+  
+  <h4 class="ui dividing header">Qué</h4>
+  <div class="field">
+    <label>Titulo</label>
+    <input type="text" name="titulo" placeholder="First Name">
+  </div>
+  <div class="field">
+    <label>Descripcion</label>
+    <textarea name="descripcion" rows="2"></textarea>
+  </div>
+
+  <!-- POR QUE: Contexto + Objetivos -->
+
+  <h4 class="ui dividing header">Por qué</h4>
+
+  <div class="field">
+    <label>Contexto</label>
+    <textarea name="contexto" rows="2"></textarea>
+  </div>
+
+  <div class="field">
+    <label>Objetivos</label>
+    <textarea name="objetivos" rows="2"></textarea>
+  </div>
+
+ 
+  <!-- DONDE -->  
+  <h4 class="ui dividing header">Donde</h4>
+  <div class="two fields">
+    <div class="field">
+      <label>Lugar</label>
+            <input type="text" name="lugar" placeholder="Lugar">
+    </div>
+    <div class="field">
+      <label>Ciudad</label>
+      <div class="ui fluid search selection dropdown">
+        <input type="hidden" name="ciudad">
+        <i class="dropdown icon"></i>
+        <div class="default text">Seleccionar Ciudad</div>
+          <div class="menu">
+            <div class="item" data-value="af"><i class="af flag"></i>Pehuajó</div>
+            <div class="item" data-value="ax"><i class="ax flag"></i>Madero</div>
+          </div>
+       </div>
+    </div>
+  </div>
+
+  <!-- CUANDO -->
+  <h4 class="ui dividing header">Cuándo</h4>
+
+  <div class="fields">
+    <div class="eight wide field">
+      <label>Desde</label>
+      <input type="text" name="fecha_desde" placeholder="Desde#">
+    </div>
+    <div class="eight wide field">
+      <label>Hasta</label>
+      <input type="text" name="fecha_hasta" placeholder="Hasta">
+    </div>
+  </div>
+
+
+  <!-- Temáticas -->
+   <h4 class="ui dividing header">Temática</h4>
+   <div class="field">
+    <label>Etiquetas (separadas por coma)</label>
+    <input type="text" name="etiquetas" placeholder="Etiquetas">
+  </div>
+
+   <div class="ui segment">
+    <div class="field">
+      <div class="ui toggle checkbox">
+        <input type="checkbox" name="publicar" tabindex="0" class="hidden">
+        <label>Publicar?</label>
+      </div>
+    </div>
+  </div>
+  <div class="ui button" tabindex="0">Crear Convocatoria</div>
+</form>
+
+
+{% endblock %}

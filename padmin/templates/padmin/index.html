@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+<a class="ui icon button" href="convocatoria/new/1">
+  <i class="plus icon"></i>
+</a>
+
+<div class="ui sizer vertical segment">
+  <div class="ui huge header">Convocatorias Vigentes</div>
+</div> 
+
+
+<div class="ui text menu">
+  <div class="header item">Ordenar Por</div>
+  <a class="active item">
+    Fecha Cierre
+  </a>
+  <a class="item">
+    Más Populares
+  </a>
+</div>
+
+{% if object_list %}
+
+<div class="ui divided link items">
+
+{% for convocatoria in object_list %}
+  
+
+  <div class="item">
+    <div class="image">
+      <img src="{% static '/images/convocatorias/img1.png' %}">
+    </div>
+    <div class="content">
+      <a href="{{ convocatoria.get_absolute_url }}" class="header">{{convocatoria.titulo}}</a>
+      <div class="meta">
+        <span class="cinema">{{convocatoria.fecha_desde}}</span>
+      </div>
+      <div class="description">
+        <p>{{convocatoria.descripcion}}</p>
+      </div>
+      <div class="extra">
+        <div class="ui right floated primary button">
+          Publicar
+        </div>
+        <div class="ui right floated primary button">
+          Borrar
+        </div>
+
+        <div class="ui label">Ambiente, Tecnología</div>
+      </div>
+    </div>
+  </div>
+
+
+  {% endfor %}
+
+</div>
+
+{% else %}
+   
+   <div class="ui info message">
+      <i class="close icon"></i>
+        <div class="header">
+          No hay convocatorias vigentes
+        </div>
+  </div>
+
+{% endif %}
+
+
+
+{% endblock %}
