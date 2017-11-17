@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load staticfiles %}
+
 {% block content %}
 
 <div class="ui breadcrumb">
@@ -32,11 +34,13 @@
   </div>
 </div>
 
+
 <h3 class="ui header">Donde</h3>
 <div class="ui horizontal segments">
   <div class="ui segment">
     <p>Lugar: {{object.lugar}}</p>
   </div>
+
 
   <div class="ui segment">
     <p>Ciudad: {{object.ciudad}}</p>
@@ -48,13 +52,44 @@
 <h3 class="ui header">Temáticas</h3>
 <div class="ui horizontal segments">
   <div class="ui segment">
-    <p>{{convocatoria.tematicas}}</p>
+    <p>{{object.tematicas}}</p>
   </div>
 
 </div>
 
+<a href="{% url 'padmin:convocatoria_edit' object.pk %}">
 <button class="ui button right floated" type="button">Editar</button>
-<button class="ui button {% if object.publicada %} disabled {% endif %} right floated" type="button">Publicar</button>
+</a>
+<a href="#" onclick="#">
+<button class="ui button {% if object.publicada %} disabled {% endif %} right floated" type="button">
+            Publicar
+</button>
+</a>
 
 
+<div class="ui modal">
+  <div class="header">Publicar Convocatoria?</div>
+  <div class="content">
+    <p></p>
+  </div>
+
+  <div class="actions">
+    <div class="ui red cancel inverted button">
+      <i class="remove icon"></i>
+      Cancelar
+    </div>
+    <div class="ui green ok inverted button">
+       <a href="#" onclick="#">
+          <i class="checkmark icon"></i>
+          Si
+       </a>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+  <script src="{% static 'js/padmin.js' %}"></script>
 {% endblock %}

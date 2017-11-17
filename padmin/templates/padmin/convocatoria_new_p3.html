@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h3 class="ui dividing header">Nueva Convocatoria</h3>
+
+<form action="." class="ui form" method="POST">
+
+  {% csrf_token %}
+
+  <!-- CUANDO -->
+  <h4 class="ui dividing header">Cuándo</h4>
+
+  <div class="fields">
+    <div class="eight wide field">
+      <label>Desde</label>
+      <input type="date" name="fecha_desde" placeholder="Desde">
+    </div>
+    <div class="eight wide field">
+      <label>Hasta</label>
+      <input type="date" name="fecha_hasta" placeholder="Hasta">
+    </div>
+  </div>
+
+
+  <button class="ui button" type="submit">Siguiente</button>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h3 class="ui dividing header">Nueva Convocatoria .:. Paso 4</h3>
+
+<form action="." class="ui form" method="POST">
+
+  {% csrf_token %}
+
+  <!-- Temáticas -->
+   <h4 class="ui dividing header">Temáticas</h4>
+   <div class="field">
+    <label>Etiquetas (separadas por coma)</label>
+    <input type="text" name="etiquetas" placeholder="Etiquetas">
+  </div>
+
+
+  <button class="ui button" type="submit">Siguiente</button>
+
+</form>
+
+{% endblock %}

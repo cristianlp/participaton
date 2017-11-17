@@ -4,7 +4,7 @@
 {% block content %}
 
 
-<a class="ui icon button" href="convocatoria/new/1">
+<a class="ui icon button" href="convocatoria/new">
   <i class="plus icon"></i>
 </a>
 
@@ -44,12 +44,18 @@
       </div>
       <div class="extra">
         <div class="ui right floated primary button">
-          Publicar
-        </div>
-        <div class="ui right floated primary button">
           Borrar
         </div>
-
+        <div class="ui right floated primary button">
+          Publicar
+        </div>
+        <a href="{% url 'padmin:convocatoria_edit' convocatoria.id %}">
+        <div class="ui right floated primary button">
+          
+              Editar
+          
+        </div>
+        </a>
         <div class="ui label">Ambiente, Tecnología</div>
       </div>
     </div>

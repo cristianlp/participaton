@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="." class="ui form" method="POST" enctype="multipart/form-data">
+
+  {% csrf_token %}
+
+  <h4 class="ui dividing header">Imagen</h4>
+  <div class="field">
+    <label>Imagen</label>
+    <input type="file" name="imagen">
+  </div>
+
+   <div class="ui segment">
+    <div class="field">
+      <div class="ui toggle checkbox">
+        <input type="checkbox" name="publicar" tabindex="0">
+        <label>¿Publicar?</label>
+      </div>
+    </div>
+  </div>
+
+  <button class="ui button" type="submit">Guardar</button>
+
+</form>
+
+{% endblock %}

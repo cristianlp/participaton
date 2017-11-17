@@ -1,29 +1,35 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block content %
 
 <form action="." class="ui form" method="POST" enctype="multipart/form-data">
 
   {% csrf_token %}
 
-  <h4 class="ui dividing header">Imagen</h4>
-  <div class="field">
-    <label>Imagen</label>
-    <input type="file" name="imagen">
-  </div>
-
-   <div class="ui segment">
+<!-- DONDE -->  
+  <h4 class="ui dividing header">Donde</h4>
+  <div class="two fields">
     <div class="field">
-      <div class="ui toggle checkbox">
-        <input type="checkbox" name="publicar" tabindex="0">
-        <label>¿Publicar?</label>
-      </div>
+      <label>Lugar</label>
+            <input type="text" name="lugar" placeholder="Lugar">
+    </div>
+    <div class="field">
+      <label>Ciudad</label>
+      <div class="ui fluid search selection dropdown">
+        <input type="hidden" name="ciudad">
+        <i class="dropdown icon"></i>
+        <div class="default text">Seleccionar Ciudad</div>
+          <div class="menu">
+            <div class="item" data-value="af"><i class="af flag"></i>Pehuajó</div>
+            <div class="item" data-value="ax"><i class="ax flag"></i>Madero</div>
+          </div>
+       </div>
     </div>
   </div>
 
-  <button class="ui button" type="submit">Guardar</button>
-
-
+    <button class="ui button" type="submit">Siguiente</button>
 
 </form>
-  {% endblock %}
+
+
+{% endblock %
