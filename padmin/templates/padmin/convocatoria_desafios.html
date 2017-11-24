@@ -5,14 +5,15 @@
 {% block content %}
 
 
-<h3 class="ui dividing header">Convocatoria: {{convocatoria.titulo}}</h3>
+<h3 class="ui dividing header">{{convocatoria.titulo}}</h3>
+<h5>Del {{convocatoria.fecha_desde}} al {{convocatoria.fecha_hasta}}</h4>
 
 
 <div class="ui raised segment">
 		{{convocatoria.descripcion}}
 </div>
 
-<div class="ui grid">
+<!-- <div class="ui grid">
 	
 	<div class="two wide column">
 		<div class="ui raised segment">
@@ -27,50 +28,39 @@
 	</div>
 
 </div>
+ -->
+
+ <a class="ui icon button" href="#" onclick="modal_desafio_new()">
+          <i class="plus icon"></i>
+</a>
 
 <div id="desafios_tab">
 
   <div class="ui secondary menu">
     <a class="item active" data-tab="desafios_data_tab">Desafíos</a>
-    <a class="item" data-tab="documentos_data_tab">Documentos</a>
-    <a class="item" data-tab="participantes_data_tab">Participantes</a>
+    <a class="item" data-tab="notas_data_tab">Notas</a>
   </div>
+
+
 
   <div class="ui active tab segment" data-tab="desafios_data_tab">
 
 
-		<a class="ui icon button" href="#" onclick="modal_desafio_new()">
-  				<i class="plus icon"></i>
-		</a>
-
-     <div id="desafios" class="ui relaxed divided list">
-
-     </div>
+     <!-- Lista de Desafios --> 
+     <div id="desafios" class="ui divided items"></div>
   		
     
   </div>
 
-  <div class="ui  tab segment" data-tab="documentos">
-
-    	<ul>
-    	{% for documento in documentos %}
-    			<li>{{documento}}</li>
-    	{% endfor %}
-    	</ul>
-
-  </div>
-  <div class="ui tab segment" data-tab="participantes">
-    	<ul>
-    		{% for participante in participantes %}
-    			<li>{{participante}}</li>
-    		{% endfor %}
-    	</ul>
+  <div class="ui  tab segment" data-tab="reglas_data_tab">
+  <p>Reglas varias</p>
+  
   </div>
 
 </div>
 
 
-<!-- MODALES -->
+<!-- *************** VENTANAS MODALES  ************************************************************ -->
 
 <div class="ui modal">
   <div class="header">Nuevo Desafío</div>

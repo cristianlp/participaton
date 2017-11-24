@@ -16,19 +16,26 @@ function get_desafios(cid) {
             $.each(desafios, function (indice,desafio) {
             // template
             $(
-                '<div class="item">' +
-                  '<i class="large github middle aligned icon"></i>' +
-                  '<div class="content">' +
-                      '<a class="header">'+ desafio['titulo'] +'</a>' +
-                      '<div class="description">'+desafio['descripcion']+'</div>' +
-
-/*                      '<div class="extra">' +
-                        '<div class="ui right floated button">'+
-                          'Ver'+
-                        '</div>'+
-                      '</div>' + 
-*/
-                  '</div>' +
+                '<div class="item">'+
+                  '<div class="content">'+
+                    '<a class="header">'+ desafio['titulo'] +'</a>'+
+                    '<div class="meta">'+
+                      '<span class="cinema">'+
+                      '<a href="#" title="Ver participantes">5 participantes</a>'+
+                      '</span>'+
+                    '</div>'+
+                    '<div class="description">'+
+                      '<p>'+ desafio['descripcion'] +'</p>'+
+                    '</div>'+
+                    '<div class="extra">'+
+                      '<div class="ui label">Tematica 1</div>'+
+                      '<div class="ui label"><i class="globe icon"></i> Tematica 2</div>'+
+                      '<div class="ui right floated primary button">'+
+                            'Documentos Asociados'+
+                            '<i class="right chevron icon"></i>'+
+                      '</div>'+
+                    '</div>'+
+                  '</div>'+
                 '</div>'
             ).appendTo('#desafios');
            
@@ -59,25 +66,33 @@ function desafio_new() {
         },
 
         success: function (data, textStatus) {
-            var desafio_nuevo = data['results'][0];
-            $(
-                '<div class="item">' +
-                  '<i class="large github middle aligned icon"></i>' +
-                  '<div class="content">' +
-                      '<a class="header">'+ desafio_nuevo['titulo'] +'</a>' +
-                      '<div class="description">'+desafio_nuevo['descripcion']+'</div>' +
 
-/*                      '<div class="extra">' +
-                        '<div class="ui right floated button">'+
-                          'Ver'+
-                        '</div>'+
-                      '</div>' + 
-*/
-                  '</div>' +
+            get_desafios(cid);
+/*            var desafio_nuevo = data['results'][0];
+            $('#desafios').after
+            (
+                '<div class="item">'+
+                  '<div class="content">'+
+                    '<a class="header">'+ desafio['titulo'] +'</a>'+
+                    '<div class="meta">'+
+                      '<span class="cinema">'+'5 participantes'+'</span>'+
+                    '</div>'+
+                    '<div class="description">'+
+                      '<p>'+ desafio['descripcion'] +'</p>'+
+                    '</div>'+
+                    '<div class="extra">'+
+                      '<div class="ui label">Tematica 1</div>'+
+                      '<div class="ui label"><i class="globe icon"></i> Tematica 2</div>'+
+                      '<div class="ui right floated primary button">'+
+                            'Documentos Asociados'+
+                            '<i class="right chevron icon"></i>'+
+                      '</div>'+
+                    '</div>'+
+                  '</div>'+
                 '</div>'
-            ).appendTo('#desafios');
+              );*/
 
-       },
+          },
         error: function(xhr, status, e) {
             alert(status, e);
         }
@@ -256,3 +271,19 @@ $(function() {
     });
 
 });
+
+//***************************** borrar
+/*                '<div class="item">' +
+                  '<i class="large github middle aligned icon"></i>' +
+                  '<div class="content">' +
+                      '<a class="header">'+ desafio_nuevo['titulo'] +'</a>' +
+                      '<div class="description">'+desafio_nuevo['descripcion']+'</div>' +
+
+                      '<div class="extra">' +
+                        '<div class="ui right floated button">'+
+                          'Ver'+
+                        '</div>'+
+                      '</div>' + 
+
+                  '</div>' +
+                '</div>'*/
