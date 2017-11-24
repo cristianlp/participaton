@@ -11,7 +11,7 @@ from .forms import DesafioNuevoForm
 def get_desafios(request, convocatoria_id):
 	if request.method == "GET":
 		if request.is_ajax():
-			desafios = Desafio.objects.all().values('id', 'titulo', 'descripcion')
+			desafios = Desafio.objects.filter(convocatoria=convocatoria_id).values('id', 'titulo', 'descripcion')
 			
 			return JsonResponse({'results': list(desafios)})			
 
