@@ -11,12 +11,6 @@ def convocatoria_directory_path(instance, filename):
     # archivo cargado en MEDIA_ROOT/convocatoria_<id>/<filename>
     return 'convocatoria_{0}/{1}'.format(instance.convocatoria.id, filename)
 
-class Documento(models.Model):
-    descripcion = models.CharField(max_length=255, blank=True)
-    upload = models.FileField(upload_to=convocatoria_directory_path)
-    subido_el = models.DateTimeField(auto_now_add=True)
-    convocatoria = models.ForeignKey("Convocatoria")
-
 
 class Convocatoria(models.Model):
 	titulo = models.CharField(max_length=250)

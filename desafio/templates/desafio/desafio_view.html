@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="ui steps">
+  <div class="step">
+    <i class="truck icon"></i>
+    <div class="content">
+      <div class="title">Datos Obligatorios</div>
+      <div class="description">Descripcion</div>
+    </div>
+  </div>
+  <div class="active step">
+    <i class="payment icon"></i>
+    <div class="content">
+      <div class="title">Datos Adicionales</div>
+      <div class="description">Documentos, participantes</div>
+    </div>
+  </div>
+  <div class="disabled step">
+    <i class="info icon"></i>
+    <div class="content">
+      <div class="title">Confirmar publicación</div>
+    </div>
+  </div>
+</div>
+
+<div class="ui form">
+ 
+  <form method="post" action=".">
+ 
+  <div class="field">
+        <label>Etiquetas</label>
+        <input type="text" placeholder="Etiquetas">
+  </div>
+   
+  <div class="field">
+     <div class="ui checkbox">
+      <input type="checkbox" tabindex="0" class="hidden">
+      <label>Votable</label>
+     </div>
+  </div>
+
+ </form>
+ 
+</div>
+
+
+<div class="ui tabular desafios_tab">
+
+  <div class="ui secondary menu">
+    <a class="item active" data-tab="documentos_data_tab">Documentos Asociados</a>
+    <a class="item" data-tab="participantes_data_tab">Participantes</a>
+  </div>
+
+
+
+  <div class="ui active tab segment" data-tab="documentos_data_tab">
+
+
+	<a class="ui icon button" href="#" onclick="modal_documento_new()">
+       	  <i class="plus icon"></i>
+	</a>
+
+	{% if documentos %}
+
+     
+     	<!-- Lista de Documentos --> 
+     
+		<div class="ui relaxed divided list">     	
+     	
+     	{% for documento in documentos %}
+
+			  <div class="item">
+			    <i class="large github middle aligned icon"></i>
+			    <div class="content">
+			      <a class="header">Semantic-Org/Semantic-UI</a>
+			      <div class="description">Updated 10 mins ago</div>
+			    </div>
+			  </div>
+
+    	{% endfor %}
+
+	</div>     
+
+
+     {% else %}
+	<div class="ui message">
+		<div class="header">
+   			No hay documentos cargados
+ 		</div>
+	</div>     		
+    {% endif %}
+  		
+    
+  </div>
+
+  <div class="ui  tab segment" data-tab="participantes_data_tab">
+  
+  		<a class="ui icon button" href="#" onclick="modal_participante_new()">
+       	  <i class="plus icon"></i>
+	</a>
+
+	{% if participantes %}
+
+     
+     	<!-- Lista de Participantes --> 
+     
+		<div class="ui relaxed divided list">     	
+     	
+     	{% for participante in participante %}
+
+			  <div class="item">
+			    <i class="large github middle aligned icon"></i>
+			    <div class="content">
+			      <a class="header">Semantic-Org/Semantic-UI</a>
+			      <div class="description">Updated 10 mins ago</div>
+			    </div>
+			  </div>
+
+    	{% endfor %}
+
+	</div>     
+
+
+     {% else %}
+	<div class="ui message">
+		<div class="header">
+   			No hay participantes cargados
+ 		</div>
+	</div>     		
+    {% endif %}
+  		
+    
+  </div>
+  
+</div>
+
+
+
+<!-- VENTANAS MODALES ******************************************************* -->
+<div id="modal_documento_new" class="ui modal">
+
+<div class="header">Nuevo Documento</div>
+
+<div class="content">
+    
+ <form 
+      action="{% url 'desafio:documento_new' %}" 
+      name="form-documento-new" id="form-documento-new" 
+      method="post">
+
+  <div class="ui form">
+
+   
+    <div class="field">
+        <label>Descripcion</label>
+        <textarea name="descripcion" id="descripcion" cols="30" rows="3" placeholder="Descripcion">
+        </textarea>
+    </div>
+  
+
+  <div class="actions">
+    <div class="ui red cancel inverted button">
+      <i class="remove icon"></i>
+        Cancelar
+    </div>
+    <div id="documento_guardar" class="ui green ok inverted button">
+       <!--<a convocatoria_id={{convocatoria.id}} data-url="{% url 'desafio:desafio_new' %}" 
+                                              href="#" onclick="desafio_new(this)">-->
+          <i class="checkmark icon"></i>
+          Guardar
+       </a>
+        {% csrf_token %}
+    </div>
+  </div>
+
+</div>
+
+</form>
+
+</div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+	<script src="{% static 'js/desafio.js' %}"></script>
+{% endblock %}

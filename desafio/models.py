@@ -5,6 +5,16 @@ from taggit.managers import TaggableManager
 from usuario.models import Usuario
 from convocatoria.models import Convocatoria
 
+def desafio_directory_path(instance, filename):
+    # archivo cargado en MEDIA_ROOT/desafio_<id>/<filename>
+    return 'desafio_{0}/{1}'.format(instance.desafio.id, filename)
+
+
+class Documento(models.Model):
+    descripcion = models.CharField(max_length=255, blank=True)
+    documento = models.FileField(upload_to=desafio_directory_path)
+    subido_el = models.DateTimeField(auto_now_add=True)
+    desafio = models.ForeignKey("Desafio")
 
 
 class Desafio(models.Model):
