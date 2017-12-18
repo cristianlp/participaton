@@ -8,7 +8,9 @@ from django.core import serializers
 
 from convocatoria.models import Convocatoria
 from .models import Desafio, Documento
-from .forms import DesafioNuevoForm
+from .forms import DesafioNuevoForm, UploadDocumentoForm
+
+
 
 def get_desafios(request, convocatoria_id):
 	if request.method == "GET":
@@ -56,10 +58,18 @@ def desafio_view(request, desafio_id):
 	#return JsonResponse({'results': list(Desafio.objects.get(id=desafio_id).values('id', 'titulo', 'descripcion'))})
 
 
+def upload_documento(request):
+	
+	if request.method == "POST":
+		form = UploadDocumentoForm(request.POST, request.FILES)
+		if form.is_valid():
+			instance = Documento(documento=request.FILES['documento'])
+			instance.save()
+			return HttpResponseRedirect('/desafio/desafio_view/')
 
-@require_POST
-def document_upload(request):
-    save_path = os.path.join(settings.MEDIA_ROOT, 'uploads', request.FILES['documento'])
-    path = default_storage.save(save_path, request.FILES['documento'])
-    document = Document.objects.create(document=path, upload_by=request.user)
-    return JsonResponse({'document': document.id})
+	else:
+		form = UploadDocumentoForm()
+
+	return render(request, 'desafio/desafio_view.html', {'form': form})
+
+

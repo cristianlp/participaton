@@ -14,6 +14,7 @@ class Documento(models.Model):
     descripcion = models.CharField(max_length=255, blank=True)
     documento = models.FileField(upload_to=desafio_directory_path)
     subido_el = models.DateTimeField(auto_now_add=True)
+    subido_por = models.ForeignKey(Usuario)
     desafio = models.ForeignKey("Desafio")
 
 

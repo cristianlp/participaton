@@ -148,7 +148,7 @@
 <div class="content">
     
  <form 
-      action="{% url 'desafio:documento_new' %}" 
+      action="." 
       name="form-documento-new" id="form-documento-new" 
       method="post">
 
@@ -159,6 +159,10 @@
         <label>Descripcion</label>
         <textarea name="descripcion" id="descripcion" cols="30" rows="3" placeholder="Descripcion">
         </textarea>
+    </div>
+
+    <div class="field">
+      <input type="file" name="documento" id="documento_id">
     </div>
   
 
